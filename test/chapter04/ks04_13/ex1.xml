@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<info>
+    <institution idea="创造高质量软件产品" name="软件特攻队"/>
+    <team captain="女儿叫老白"  password="I'm in.">
+        <user qq="1111111" ">北京朋友</user>
+        <user qq="2222222" ">上海朋友</user>
+        <user qq="3333333" ">西安朋友</user>		
+        <user qq="4444444" ">成都朋友</user>				
+        <user qq="5555555" ">广州朋友</user>						
+    </team>
+</info>

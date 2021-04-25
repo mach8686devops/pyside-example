@@ -1,0 +1,64 @@
+﻿/*! 
+* Copyright (C) 2018 女儿叫老白
+* 版权所有。
+* 代码仅用于课程《Qt 5/PyQt 5实战指南》的学习，请勿传播。
+* 免责声明:代码不保证稳定性，请勿用作商业用途，否则后果自负。
+
+\file: graphview.h
+\brief 演示用头文件
+\author 女儿叫老白   微信公众号:软件特攻队(微信号:xingdianketang)
+\Date 2018/8 
+*/
+
+#pragma once
+#include <QGraphicsView>
+
+QT_BEGIN_NAMESPACE
+class QMouseEvent;
+QT_END_NAMESPACE
+
+class CGraphView : public QGraphicsView {
+	Q_OBJECT
+public:
+	CGraphView(QWidget* parent);
+    ~CGraphView();
+
+public:
+    void addEllipse();
+    void addRect();
+    
+public slots:
+ #ifndef QT_NO_CLIPBOARD
+    void cut();     /// 剪切
+    void copy();    /// 拷贝
+    void paste();   /// 黏贴
+#endif
+
+Q_SIGNALS:
+    void viewMouseMove(const QPointF&);
+protected:
+    virtual void mousePressEvent(QMouseEvent *event) override;
+    virtual void mouseMoveEvent(QMouseEvent *e) override;
+    virtual void mouseReleaseEvent(QMouseEvent *e) override;
+    virtual void drawBackground(QPainter *painter, const QRectF &rect);
+    void 	createActions();
+    virtual void drawForeground(QPainter *painter, const QRectF &rect);
+    void calculateSceneRect(); // 重新计算场景尺寸
+#ifndef QT_NO_CONTEXTMENU
+    void contextMenuEvent(QContextMenuEvent *event) override;
+#endif
+
+Q_SIGNALS:
+
+private:
+    void copyItems(QList<QGraphicsItem*>&);    /// 拷贝图元
+private:
+#ifndef QT_NO_CLIPBOARD
+    QAction *m_pCutAct;         /// 剪切
+    QAction *m_pCopyAct;		/// 复制
+    QAction *m_pPasteAct;		/// 黏贴
+#endif
+    QPointF m_ptScene;
+	QList<QGraphicsItem*> m_selectedItems;	/// 选中图元列表
+	QPointF m_ptLastMousePosition;			/// 上次鼠标单击的位置坐标
+};

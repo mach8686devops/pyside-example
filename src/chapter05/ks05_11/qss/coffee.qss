@@ -1,0 +1,25 @@
+.QWidget {
+   background-color: blue;
+}
+
+
+QPushButton {
+    background-color: palegoldenrod;
+    border-width: 3px;
+    border-color: darkgray;
+    border-style: solid;
+    border-radius: 4;
+    padding: 3px;
+    min-width: 8ex;
+    min-height: 3.5ex;
+}
+
+QPushButton:hover {
+   background-color: gray;
+}
+
+
+QLabel, QAbstractButton {
+    font: bold;
+}
+

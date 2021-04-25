@@ -1,0 +1,1 @@
+pyrcc5 ks19_08.qrc -o ks19_08_rc.py

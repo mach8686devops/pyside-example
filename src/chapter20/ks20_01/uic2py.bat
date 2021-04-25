@@ -1,0 +1,1 @@
+pyrcc5 ks20_01.qrc -o ks20_01_rc.py

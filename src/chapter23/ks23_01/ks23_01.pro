@@ -1,0 +1,47 @@
+include ($$(TRAINDEVHOME)/src/gui_base.pri)
+
+TEMPLATE	= app
+LANGUAGE	= C++
+
+QT      += widgets core sql
+CONFIG  += console qt
+
+TEMPDIR		= $$TRAIN_OBJ_PATH/chapter04/ks23_01
+
+DESTDIR     = $$TRAIN_BIN_PATH
+
+INCLUDEPATH += $$TRAIN_INCLUDE_PATH/base/basedll
+
+HEADERS		+=  $$TRAIN_SRC_PATH/gui_base.pri \
+				ks23_01.pro
+	
+SOURCES    +=  main.cpp
+
+
+OBJECTS_DIR = $$TEMPDIR
+MOC_DIR		= $$TEMPDIR/moc
+UI_DIR		= $$TEMPDIR/ui
+
+debug_and_release {
+	CONFIG(debug, debug|release) {	
+		LIBS	+= -lbasedll_d
+
+		TARGET = ks23_01_d
+	}
+	CONFIG(release, debug|release) {			   
+		LIBS	+= -lbasedll
+
+		TARGET	= ks23_01
+	}
+} else {
+	debug {
+		LIBS	+= -lbasedll_d
+	
+		TARGET	= ks23_01_d
+	}
+	release {
+		LIBS	+= -lbasedll
+		
+		TARGET 	= ks23_01
+	}
+}
